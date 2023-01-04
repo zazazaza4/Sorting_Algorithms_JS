@@ -1,14 +1,14 @@
 let startShow = false;
+let sortRound = 1;
 let numbers = 20;
-const widthMain = innerWidth - 50;
+const widthMain = innerWidth - 1;
 let bandSize = widthMain / numbers;
 let arrayTest = [];
 let frame = 30;
 let sort = {
   bubble: sortArrayBubble,
-  insertion: () => {},
+  insertion: sortArrayInsertion,
   selection: sortArraySelection,
-  quicksort: () => {},
 };
 
 let sortedArray = sort["bubble"];
@@ -86,8 +86,19 @@ function sortArraySelection(arr = []) {
   return false;
 }
 
+function sortArrayInsertion(arr) {
+  for (let i = 1; i < arr.length; i++) {
+    for (let j = i - 1; j > -1; j--) {
+      if (arr[j + 1] < arr[j]) {
+        [arr[j + 1], arr[j]] = [arr[j], arr[j + 1]];
+        return true;
+      }
+    }
+  }
+}
+
 document.getElementById("start").addEventListener("click", () => {
-  startShow = !startShow;
+  startShow = true;
   numbers = document.getElementById("number")?.value || 20;
   frame = document.getElementById("speed")?.value || 20;
   bandSize = widthMain / numbers;
