@@ -9,6 +9,26 @@
 </head>
 <body>
     <main>
+        <div class="absolute sorts">
+            <form>
+                <label for="choose-sorts">Choose a sorting algorithm:</label>
+                <select id="choose-sorts">
+                  <option value="bubble" label="Bubble">Bubble</option>
+                  <option value="insertion" label="Insertion">Insertion</option>
+                  <option value="selection" label="Selection">Selection</option>
+                  <option value="quicksort" label="Quicksort">Quicksort</option>
+                </select>
+              </form>
+        </div>
+        <div class="absolute number">
+            <label for="number">The number of elements =</label>
+            <input type="number" max="300" value="150" min="2" id="number" name="number">
+        </div>
+        <div class="absolute speed">
+            <label for="speed">The speed of the sort =</label>
+            <input type="number" max="60" value="20" min="2" id="speed" name="speed">
+        </div>
+        <button id="start" class="absolute">Start</button>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js"></script>
