@@ -1,8 +1,68 @@
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
-  }
-  canvas {
+}
+
+canvas {
     display: block;
-  }
-  
+}
+
+label {
+    font-size: 18px;
+}
+
+select {
+    border: 2px solid #ccc;
+    width: 200px;
+}
+
+option,
+select {
+    font-size: 16px;
+}
+
+.absolute {
+    position: absolute;
+    left: 20px;
+}
+
+.sorts {
+    top: 10px;
+}
+
+.number {
+    top: 40px;
+}
+
+.number input {
+    width: 40px;
+}
+
+.speed {
+    top: 70px;
+}
+
+#start {
+    top: 100px;
+
+    outline: none;
+    border-radius: 20px;
+    border: none;
+    width: 200px;
+    height: 30px;
+    background-color: brown;
+    color: wheat;
+    opacity: 0.7;
+    font-size: 18px;
+    box-shadow: 0px 2px 8px black;
+
+    transition: opacity .2s, box-shadow .4s;
+
+    cursor: pointer;
+}
+
+#start:hover {
+    opacity: 1;
+    box-shadow: 1px 3px 7px black;
+}
