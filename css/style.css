@@ -14,7 +14,7 @@ label {
 
 select {
     border: 2px solid #ccc;
-    width: 200px;
+    width: 100px;
 }
 
 option,
@@ -65,4 +65,13 @@ select {
 #start:hover {
     opacity: 1;
     box-shadow: 1px 3px 7px black;
+}
+
+@media screen and (max-width: 600px) {
+
+    label,
+    option,
+    select {
+        font-size: 80%;
+    }
 }
