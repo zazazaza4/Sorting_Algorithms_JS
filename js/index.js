@@ -1,19 +1,37 @@
-const bandSize = 20;
-let y = 100;
-const arrayTest = generateArray(30, 500);
+let startShow = false;
+let numbers = 20;
+const widthMain = innerWidth - 50;
+let bandSize = widthMain / numbers;
+let arrayTest = [];
+let frame = 30;
+let sort = {
+  bubble: sortArrayBubble,
+  insertion: () => {},
+  selection: sortArraySelection,
+  quicksort: () => {},
+};
+
+let sortedArray = sort["bubble"];
 
 function setup() {
-  createCanvas(innerWidth, innerHeight);
+  createCanvas(widthMain, innerHeight - 100);
   stroke(0);
-  frameRate(15);
+  frameRate(55);
 }
 
 function draw() {
-  background(250);
-  clear();
+  if (startShow) {
+    background(250);
 
-  sortArray(arrayTest);
-  displayArray(arrayTest);
+    if (sortedArray(arrayTest)) {
+      stroke("rgb(255,5,0)");
+      displayArray(arrayTest);
+    } else {
+      stroke("rgb(0,255,0)");
+
+      displayArray(arrayTest);
+    }
+  }
 }
 
 function generateArray(n = 20, max = 20, min = 0) {
@@ -34,18 +52,51 @@ function displayArray(array = []) {
   }
 }
 
-function sortArray(array = []) {
-  let swapped = false;
+function sortArrayBubble(array = []) {
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array.length; j++) {
       if (array[j] > array[j + 1]) {
         let temp = array[j];
         array[j] = array[j + 1];
         array[j + 1] = temp;
-
-        swapped = true;
-        return swapped;
+        return true;
       }
     }
   }
 }
+
+function sortArraySelection(arr = []) {
+  let min;
+
+  for (let i = 0; i < arr.length; i++) {
+    min = i;
+
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[min]) {
+        min = j;
+      }
+    }
+
+    if (min !== i) {
+      [arr[i], arr[min]] = [arr[min], arr[i]];
+      return true;
+    }
+  }
+
+  return false;
+}
+
+document.getElementById("start").addEventListener("click", () => {
+  startShow = !startShow;
+  numbers = document.getElementById("number")?.value || 20;
+  frame = document.getElementById("speed")?.value || 20;
+  bandSize = widthMain / numbers;
+
+  const valueSorts = document.getElementById("choose-sorts")?.value || "bubble";
+  sortedArray = sort[valueSorts];
+
+  const isChangeArray = confirm("Will generate a new array ?");
+  if (isChangeArray) {
+    arrayTest = generateArray(numbers, 500);
+  }
+});
