@@ -1,5 +1,8 @@
 # Sorting_Algorithms_JS
+# [Demo](https://zazazaza4.github.io/Sorting_Algorithms_JS/)
 Sorting algorithms visualization in JavaScript | Uses p5.js
+
+![Demo](./Demo_img.PNG)
 
 ### Bubble sort
 ```js
